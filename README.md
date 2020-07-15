@@ -35,13 +35,15 @@ pip install neurokit2
 ### Yeah, but then what?
 
 Basic usage is pretty standard for right now. Place all of the SHIMMER files you wish to
-decompose into the ./shimmer/ directory and run:
+decompose into the create a directory called `./shimmer/` in the root directory,
+add all the SHIMMER .csv files into that directory directory, and run:
 
 `python NKShimmerDecompose.py`
 
 If you don't feel like moving files around and just need to work with one file then
 you can set the `data_fname` parameter in the decomposer when you call it. This should
-force the decomposer to just run on the one file.
+force the decomposer to just run on the one file. You can also adjust the optional
+parameters in the class to point to the directory where those files live.
 
 ### Okay, but where's the data?
 

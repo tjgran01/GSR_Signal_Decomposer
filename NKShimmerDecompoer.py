@@ -13,7 +13,8 @@ class NKShimmerDecomposer(object):
                  export_dir=Path(f"{os.getcwd()}/exports/"), show_fig=False,
                  save_fig=True, shimmer_file_sep="\t", sampling_rate=1000,
                  fig_dir=Path(f"{os.getcwd()}/exports/figs/"),
-                 scr_col_name="Shimmer_92EE_GSR_Skin_Conductance_CAL"):
+                 scr_col_name="Shimmer_92EE_GSR_Skin_Conductance_CAL",
+                 shimmer_fname_string_tag="_Shimmer_"):
         """
         Decomposes raw SCR signal from SHIMMER Sensor and exports the decomposed
         values to a .csv. Optionally, plots the decomposed signal and saves the
@@ -48,6 +49,10 @@ class NKShimmerDecomposer(object):
             that houses the SCR data (I do not know if this varies from project to
             project).
 
+            shimmer_fname_string_tag(str): A string identifier for the filename of
+            the shimmer files. This ensures the object will only load files that
+            contain the string this variable is set to.
+
         Returns:
             None: (Writes output files)
 
@@ -69,6 +74,7 @@ class NKShimmerDecomposer(object):
         self.shimmer_file_sep = shimmer_file_sep
         self.sampling_rate = sampling_rate
         self.scr_col_name = scr_col_name
+        self.shimmer_fname_string_tag = shimmer_fname_string_tag
 
         self.data_fnames, self.data_files = self.find_files()
 
@@ -80,7 +86,7 @@ class NKShimmerDecomposer(object):
     def find_files(self):
 
         if self.data_fname == None:
-            data_files = [self.load_data(Path(f"{self.data_fpath}/{data_fname}")) for data_fname in os.listdir(self.data_fpath)]
+            data_files = [self.load_data(Path(f"{self.data_fpath}/{data_fname}")) for data_fname in os.listdir(self.data_fpath) if self.shimmer_fname_string_tag in data_fname]
             data_fnames = [os.path.split(data_fname)[-1] for data_fname in os.listdir(self.data_fpath)]
         else:
             try:
