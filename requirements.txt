@@ -6,7 +6,7 @@ joblib==0.14.1
 kiwisolver==1.2.0
 matplotlib==3.2.1
 neurokit2==0.0.30
-numpy==1.18.4
+numpy==1.22.0
 pandas==1.0.3
 pkg-resources==0.0.0
 pyparsing==2.4.7
