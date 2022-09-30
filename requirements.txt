@@ -2,7 +2,7 @@ bidict==0.19.0
 biosppy==0.6.1
 cycler==0.10.0
 h5py==2.10.0
-joblib==0.14.1
+joblib==1.2.0
 kiwisolver==1.2.0
 matplotlib==3.2.1
 neurokit2==0.0.30
